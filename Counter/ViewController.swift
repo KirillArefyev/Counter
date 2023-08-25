@@ -10,9 +10,9 @@ import UIKit
 class ViewController: UIViewController {
    
     // аутлет кнопки
-    @IBOutlet weak var countOfTapsButton: UIButton!
+    @IBOutlet weak private var countOfTapsButton: UIButton!
     // аутлет лейбла с текстом счетчика
-    @IBOutlet weak var textCounterLabel: UILabel!
+    @IBOutlet weak private var textCounterLabel: UILabel!
     
     /* объявление переменной для счетчика нажатий.
      Беззнаковый целочисленный тип UInt выбрал намеренно, исходя из условий ТЗ:
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
      добавил два переноса на новую строку - текст и цифры отдельно
      воспринимаются лучше. К тому же снижен риск того, что счетчик может уйти
      за края лейбла при значении близкому к максимальному */
-    private var textLabel: String = "Значение счётчика:\n\n"
+    private let textLabel: String = "Значение счётчика:\n\n"
     
     // функция для создания текста лейбла посредством конкатенации
     private func makeTextOfLabel() {
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         makeTextOfLabel()
     }
 
-    @IBAction func buttonDidTap(_ sender: Any) {
+    @IBAction private func buttonDidTap(_ sender: Any) {
         // отображение тапа в консоли
         print("Нажатие")
         // обновления кол-ва тапов в счетчике
