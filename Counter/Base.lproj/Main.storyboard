@@ -17,54 +17,112 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Значение счётчика" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2a-Za-RiL">
-                                <rect key="frame" x="30" y="168" width="354" height="120"/>
+                                <rect key="frame" x="30" y="78" width="354" height="120"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="O7U-1m-fRu"/>
+                                    <constraint firstAttribute="height" constant="120" id="IMS-75-K0x"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGZ-z4-6JZ">
-                                <rect key="frame" x="87" y="722" width="240" height="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7x-FR-3Wb" userLabel="Reset Button">
+                                <rect key="frame" x="334" y="88" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="naf-7D-nps"/>
+                                    <constraint firstAttribute="height" constant="40" id="rmU-kl-Uq7"/>
+                                    <constraint firstAttribute="width" constant="40" id="tl7-c4-GE2"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="systemRedColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Нажми меня">
-                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
-                                </buttonConfiguration>
+                                <fontDescription key="fontDescription" name="AppleSymbols" family="Apple Symbols" pointSize="50"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="⟲">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="buttonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QGk-sn-njq"/>
+                                    <action selector="resetButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tAd-dD-Zh2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n95-Me-vhf" userLabel="Decrease Button">
+                                <rect key="frame" x="30" y="752" width="130" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="d28-TM-J2Q"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="k7A-Eo-AKy"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="−">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="75"/>
+                                    <color key="baseForegroundColor" systemColor="systemBlueColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="leftDecreaseButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sdm-ck-Mk8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVM-Jw-lwU" userLabel="Increase Button">
+                                <rect key="frame" x="254" y="752" width="130" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="OCo-cm-c0g"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="r4D-h2-ofn"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="+">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="75"/>
+                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="rightIncreaseButtonDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nja-5I-wF4"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="black" editable="NO" text="История изменений:" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1e-nd-jGp" userLabel="Histoty Text View">
+                                <rect key="frame" x="30" y="223" width="354" height="504"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="W2a-Za-RiL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="6ZR-hg-0sU"/>
-                            <constraint firstItem="W2a-Za-RiL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8pO-IE-ubs"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W2a-Za-RiL" secondAttribute="trailing" constant="30" id="CR3-4Z-ubf"/>
-                            <constraint firstItem="W2a-Za-RiL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="D8Z-YM-jgI"/>
-                            <constraint firstItem="HGZ-z4-6JZ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="JI3-1E-bPg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HGZ-z4-6JZ" secondAttribute="bottom" constant="60" id="UUg-IS-BJM"/>
+                            <constraint firstItem="Q1e-nd-jGp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="W2a-Za-RiL" secondAttribute="leading" id="2u4-iX-WFU"/>
+                            <constraint firstItem="W2a-Za-RiL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BFu-HY-tY4"/>
+                            <constraint firstItem="n95-Me-vhf" firstAttribute="top" secondItem="Q1e-nd-jGp" secondAttribute="bottom" constant="25" id="BVC-QK-wnQ"/>
+                            <constraint firstItem="Q1e-nd-jGp" firstAttribute="centerX" secondItem="W2a-Za-RiL" secondAttribute="centerX" id="F3e-2S-2Yi"/>
+                            <constraint firstItem="W2a-Za-RiL" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Iab-lT-07K"/>
+                            <constraint firstItem="VVM-Jw-lwU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="n95-Me-vhf" secondAttribute="trailing" constant="8" symbolic="YES" id="U1n-Yb-NJ1"/>
+                            <constraint firstItem="j7x-FR-3Wb" firstAttribute="top" secondItem="W2a-Za-RiL" secondAttribute="top" constant="10" id="UV3-dc-VkW"/>
+                            <constraint firstItem="Q1e-nd-jGp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="YgK-Y1-ljn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="n95-Me-vhf" secondAttribute="bottom" constant="30" id="ZzE-xz-YQb"/>
+                            <constraint firstItem="j7x-FR-3Wb" firstAttribute="trailing" secondItem="W2a-Za-RiL" secondAttribute="trailing" constant="-10" id="bgL-dV-hG1"/>
+                            <constraint firstItem="n95-Me-vhf" firstAttribute="top" secondItem="VVM-Jw-lwU" secondAttribute="top" id="dG6-7f-9bI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VVM-Jw-lwU" secondAttribute="trailing" constant="30" id="dVM-dX-LdH"/>
+                            <constraint firstItem="n95-Me-vhf" firstAttribute="bottom" secondItem="VVM-Jw-lwU" secondAttribute="bottom" id="jFX-S6-xMe"/>
+                            <constraint firstItem="Q1e-nd-jGp" firstAttribute="top" secondItem="W2a-Za-RiL" secondAttribute="bottom" constant="25" id="oog-Ys-qVW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VVM-Jw-lwU" secondAttribute="bottom" constant="30" id="qHq-m9-6Kk"/>
+                            <constraint firstItem="n95-Me-vhf" firstAttribute="centerY" secondItem="VVM-Jw-lwU" secondAttribute="centerY" id="tOo-Ze-gW7"/>
+                            <constraint firstItem="W2a-Za-RiL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="vep-8Y-TXa"/>
+                            <constraint firstItem="n95-Me-vhf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="whL-3a-6XT"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="countOfTapsButton" destination="HGZ-z4-6JZ" id="7Bz-ct-XrZ"/>
-                        <outlet property="textCounterLabel" destination="W2a-Za-RiL" id="Q1B-lA-FPu"/>
+                        <outlet property="historyTextView" destination="Q1e-nd-jGp" id="HMV-9q-Np6"/>
+                        <outlet property="leftDecriaseecreaseButton" destination="n95-Me-vhf" id="UPY-xx-gGV"/>
+                        <outlet property="resetButton" destination="j7x-FR-3Wb" id="d4T-Xq-oAJ"/>
+                        <outlet property="rightIncreaseButton" destination="VVM-Jw-lwU" id="f0u-HE-yef"/>
+                        <outlet property="textCounterLabel" destination="W2a-Za-RiL" id="dgK-k8-r2s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-178.2608695652174" y="3.3482142857142856"/>
+            <point key="canvasLocation" x="-179.71014492753625" y="2.6785714285714284"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
