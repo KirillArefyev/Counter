@@ -8,22 +8,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    // аутлет левой кнопки
-    @IBOutlet weak private var leftDecriaseecreaseButton: UIButton!
-    // аутлет правой кнопки
-    @IBOutlet weak private var rightIncreaseButton: UIButton!
-    // аутлет лейбла с текстом счётчика
+   
+    // аутлет кнопки
+    @IBOutlet weak private var countOfTapsButton: UIButton!
+    // аутлет лейбла с текстом счетчика
     @IBOutlet weak private var textCounterLabel: UILabel!
-    // аутлет кнопки сброса
-    @IBOutlet weak private var resetButton: UIButton!
-    // аутлет текстового поля истории изменений
-    @IBOutlet weak private var historyTextView: UITextView!
     
-    // переменная для счётчика нажатий
+    /* объявление переменной для счетчика нажатий.
+     Беззнаковый целочисленный тип UInt выбрал намеренно, исходя из условий ТЗ:
+     значение счетчика не может быть отрицательным,
+     а значение UInt.max > значения Int.max */
     private var countOfTaps: UInt = 0
-        
-    // константа для первой части лейбла счётчика
+    
+    /* объявление константы для первой части лейбла
+     чтобы визуально отделить счетчик от основного текста,
+     добавил два переноса на новую строку - текст и цифры отдельно
+     воспринимаются лучше. К тому же снижен риск того, что счетчик может уйти
+     за края лейбла при значении близкому к максимальному */
     private let textLabel: String = "Значение счётчика:\n\n"
     
     // функция для создания текста лейбла посредством конкатенации
@@ -31,66 +32,24 @@ class ViewController: UIViewController {
         textCounterLabel.text = textLabel + String(countOfTaps)
     }
     
-    // перечисление изменений состояния счётчика
-    private enum CounterStatuses: String {
-        case decrease = ": значение изменено на -1\n"
-        case increase = ": значение изменено на +1\n"
-        case reset = ": значение сброшено\n"
-        case valueBelowZero = ": попытка уменьшить значение счётчика ниже 0\n"
-    }
-    
-    // вычисляем дату и время в типе строки
-    private var dateAndTimeStamp: String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
-            return dateFormatter.string(from: Date())
-    }
-    // функция скролла текстового вью истории статусов
-    private func scrollHistoryTextViewToBottom() {
-        if historyTextView.text.count > 0 {
-            let location = historyTextView.text.count - 1
-            let bottom = NSMakeRange(location, 1)
-            historyTextView.scrollRangeToVisible(bottom)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // при загрузке счетчик лейбла устанавливается на 0
+        /* при загрузке вызов функции создания текста в лейбле
+         устанавливает в счетчик 0 */
         makeTextOfLabel()
-        // устанавливаем заголовок текстового поля изменения состояний счётчика
-        historyTextView.text = "История изменений:\n"
     }
-    
-    // функция нажатия кнопки сброса
-    @IBAction private func resetButtonDidTap(_ sender: Any) {
-        countOfTaps = 0
-        makeTextOfLabel()
-        historyTextView.text += dateAndTimeStamp + CounterStatuses.reset.rawValue
-        scrollHistoryTextViewToBottom()
-    }
-    
-    // функция нажатия левой кнопки уменьшения
-    @IBAction private func leftDecreaseButtonDidTap(_ sender: Any) {
-        if countOfTaps > 0 {
-            countOfTaps -= 1
-            makeTextOfLabel()
-            historyTextView.text += dateAndTimeStamp + CounterStatuses.decrease.rawValue
-            scrollHistoryTextViewToBottom()
-        } else {
-            countOfTaps = 0
-            makeTextOfLabel()
-            historyTextView.text += dateAndTimeStamp + CounterStatuses.valueBelowZero.rawValue
-            scrollHistoryTextViewToBottom()
-        }
-    }
-    
-    // функция нажатия правой кнопки увеличения
-    @IBAction private func rightIncreaseButtonDidTap(_ sender: Any) {
+
+    @IBAction private func buttonDidTap(_ sender: Any) {
+        // отображение тапа в консоли
+        print("Нажатие")
+        // обновления кол-ва тапов в счетчике
         countOfTaps += 1
+        // отображение кол-ва тапов в консоли
+        print(countOfTaps)
+        /* вызов функции обновления текста в лейбле после обновления
+         значения в счетчике тапов */
         makeTextOfLabel()
-        historyTextView.text += dateAndTimeStamp + CounterStatuses.increase.rawValue
-        scrollHistoryTextViewToBottom()
     }
+    
 }
 
